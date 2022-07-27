@@ -1,0 +1,23 @@
+@startuml Sidekiq
+header Sidekiq
+legend
+ref: https://mednoter.com/how-sidekiq-schedule-delay-jobs.html
+end legend
+
+left to right direction
+package Server {
+  component SidekiqServer
+  database Redis
+
+  SidekiqServer --> Redis: pool 15 times/min
+}
+
+package Client {
+  component RailsProcess
+  component SidekiqClient
+
+  RailsProcess --right-> SidekiqClient
+  SidekiqClient -> Redis
+}
+
+@enduml
