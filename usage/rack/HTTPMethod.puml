@@ -1,0 +1,34 @@
+@startuml HTTPMethod
+!startsub RequestMethod
+skinparam note<<HTTP>> {
+  textAlignment center
+  backgroundColor #darkgrey
+  borderColor transparent
+  fontName monospaced
+  fontColor #fff
+  shadowing false
+}
+skinparam noteBackgroundColor<<GET>> #61affe
+skinparam noteBackgroundColor<<POST>> #49cc90
+skinparam noteBackgroundColor<<PUT>> #fca130
+skinparam noteBackgroundColor<<PATCH>> #50e3c2
+skinparam noteBackgroundColor<<DELETE>> #f93e3e
+skinparam noteBackgroundColor<<HEAD>> #9012fe
+skinparam noteBackgroundColor<<OPTIONS>> #0d5aa7
+
+!definelong Request(verb, msg, desc)
+msg : desc
+rnote <<verb>><<HTTP>> left
+""verb""
+end note
+!enddefinelong
+
+!define GET(msg, desc) Request(" GET ", msg, desc)
+!define POST(msg, desc) Request(" POST ", msg, desc)
+!define PUT(msg, desc) Request(" PUT ", msg, desc)
+!define PATCH(msg, desc) Request(" PATCH ", msg, desc)
+!define HEAD(msg, desc) Request(" HEAD ", msg, desc)
+!define DELETE(msg, desc) Request(" DELETE ", msg, desc)
+!define OPTIONS(msg, desc) Request(" OPTIONS ", msg, desc)
+!endsub
+@enduml

@@ -1,0 +1,20 @@
+@startuml Rack
+participant rack
+ref over rack
+To use Rack, provide an “app”: an object that responds
+to the **call** method, taking the environment hash as a
+parameter (**env**), and returning an Array with three elements
+end ref
+-> rack: gem install Rack
+rack->rack: rackup
+
+ref over rack
+(anything that can be **.call**)
+  run Proc.new { |env|
+    [200, {'Content-Type' => 'text/html; charset=utf-8'}, ["Hello"]]
+  }
+end ref
+rack->rack: looks for config.ru
+@enduml
+
+' [Rack 應用程式 - 高見龍] https://railsbook.tw/extra/rack

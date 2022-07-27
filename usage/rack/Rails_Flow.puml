@@ -1,0 +1,20 @@
+@startuml Rails Flow
+participant Client
+participant WebServer
+participant Rack
+participant "Ruby on Rails" as RoR
+
+Client->WebServer
+note over Client
+GET /slatedocs/slate HTTP/2
+Host: github.com
+User-Agent: curl/7.54.0
+Accept: text/html,...;q=0.8
+end note
+note over WebServer: Puma, which speaks rack
+WebServer->Rack
+Rack->RoR
+
+@enduml
+
+' https://medium.com/whynotio/what-is-rack-in-ruby-7e0615f1d9b6
